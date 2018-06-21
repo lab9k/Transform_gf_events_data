@@ -52,5 +52,3 @@ with open('data/gentsefeestenevents.json') as json_data:
     # save output as JSON file 
     with open('data/filtered_gf_events.json', 'w') as outfile:
       json.dump(filteredEvents, outfile)
-
-
