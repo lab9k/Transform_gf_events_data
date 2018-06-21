@@ -27,6 +27,7 @@ with open('data/gentsefeestenevents.json') as json_data:
         filteredEvent["name"] = event["name"]["nl"]
         filteredEvent["startDate"] = event["startDate"]
         filteredEvent["endDate"] = event["endDate"]
+        filteredEvent["address"] = location["address"]["streetAddress"]
 
         # Additional fields (not necesssary to be an event)
         if event["description"] != None: 
