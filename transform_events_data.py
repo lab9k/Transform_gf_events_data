@@ -20,31 +20,28 @@ with open('data/gentsefeestenevents.json') as json_data:
         filteredEvent = {}
         # all data for each event
 
-        # the event doesn't have an address/name
-        if location["address"] == None or event["name"] == None:
+        # Minimum requirements for an event are: address,name,startDate & endDate
+        if location["address"] == None or event["name"] == None or event["startDate"] == None or event["endDate"] == None:
           continue
         
         filteredEvent["name"] = event["name"]["nl"]
+        filteredEvent["startDate"] = event["startDate"]
+        filteredEvent["endDate"] = event["endDate"]
 
+        # Additional fields (not necesssary to be an event)
         if event["description"] != None: 
           filteredEvent["description"] = event["description"]["nl"]
 
         if event["image"] != None:
-          filteredEvent["image_url"] = event["image"]["thumbnailUrl"]     
-        
-        if event["startDate"] != None:
-          filteredEvent["startDate"] = event["startDate"]
-
-        if event["endDate"] != None:
-          filteredEvent["endDate"] = event["endDate"]  
+          filteredEvent["image_url"] = event["image"]["thumbnailUrl"]    
 
         # list of filtered events
         filteredEvents.append(filteredEvent)
 
         print(count)
 
-        # TESTING PURPOSES OTHERWISE ALL 5400 EVENTS WILL BE LOOPED
-        if count == 20:
+        # TESTING PURPOSES: OTHERWISE ALL +-5400 EVENTS WILL BE LOOPED
+        if count == 30:
           break
 
 
