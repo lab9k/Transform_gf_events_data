@@ -10,20 +10,20 @@ with open('data/gentsefeestenevents.json') as json_data:
     count = 0
     for event in events:
       if event["location"] != None:
-        # Count events with location
-        count = count + 1
         # API request to get the location for our event
         r = requests.get(event["location"])
         location = r.json()
         
         # build data structure for 1 event 
         filteredEvent = {}
-        # all data for each event
 
         # Minimum requirements for an event are: address,name,startDate & endDate
         if location["address"] == None or event["name"] == None or event["startDate"] == None or event["endDate"] == None:
           continue
         
+        # Count events
+        count = count + 1
+
         filteredEvent["name"] = event["name"]["nl"]
         filteredEvent["startDate"] = event["startDate"]
         filteredEvent["endDate"] = event["endDate"]
@@ -41,8 +41,8 @@ with open('data/gentsefeestenevents.json') as json_data:
         print(count)
 
         # TESTING PURPOSES: OTHERWISE ALL +-5400 EVENTS WILL BE LOOPED
-        if count == 30:
-          break
+        """ if count == 30:
+          break """
 
 
     print("amount of events with location:", count)
