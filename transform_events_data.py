@@ -46,6 +46,7 @@ with open('data/gentsefeestenevents.json') as json_data:
           break """
 
 
+
     print("amount of events with location:", count)
     # print(filteredEvents)
     
